@@ -3,7 +3,7 @@ require 'test_helper'
 class UsersEditTest < ActionDispatch::IntegrationTest
   
   def setup
-    @user = users(:ivan)
+    @user = users(:michael)
   end
 
   test "unsuccessful edit" do
@@ -21,8 +21,8 @@ class UsersEditTest < ActionDispatch::IntegrationTest
     log_in_as(@user)
     get edit_user_path(@user)
     assert_template 'users/edit'
-    name  = "Ivan Khoteev"
-    email = "xxxmlhk@mail.ru"
+    name  = "Michael Example"
+    email = "michael@example.com"
     patch user_path(@user), user: { name:  name,
                                     email: email,
                                     password:              "",
@@ -38,8 +38,8 @@ class UsersEditTest < ActionDispatch::IntegrationTest
     get edit_user_path(@user)
     log_in_as(@user)
     assert_redirected_to edit_user_path(@user)
-    name  = "Ivan Khoteev"
-    email = "xxxmlhk@mail.ru"
+    name  = "Michael Example"
+    email = "michael@example.com"
     patch user_path(@user), user: { name:  name,
                                     email: email,
                                     password:              "foobar",
